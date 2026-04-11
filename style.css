@@ -1,6 +1,174 @@
+:root {
+  --color-accent: oklch(65% 15% 140);
+}
+
+html {
+  accent-color: var(--color-accent);
+}
+
 body {
-    /* Set line height to 1.5 times the font size
-         and use the OS’s UI font as the website font
-       */
-    font: 100%/1.5 system-ui;
+  font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin: 0 auto;
+  padding: 2ch;
+}
+
+/* HEADINGS */
+h1 {
+  font-size: 400%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+/* LINKS */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 0.1em solid transparent;
+}
+
+/* hover effect */
+a:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+/* IMAGESs */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* NAV */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5ch;          
+  margin-bottom: 2ch;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+/* LINKS */
+nav a {
+  flex: 1;                
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+
+  padding: 0.5em;        
+  border-radius: 0.5ch;
+  border-bottom: 0.4em solid transparent;
+}
+
+/* HOVER */
+nav a:hover {
+  border-bottom-color: var(--color-accent);
+  background: oklch(from var(--color-accent) 95% 5% h);
+}
+
+nav a.current {
+  font-weight: bold;
+  border-bottom-color: var(--color-accent);   /* CHANGE */
+  padding-bottom: 0.1em;
+}
+
+/* FORM */
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+input,
+textarea{
+  width: 100%;             /* full width */
+  box-sizing: border-box;  /* include padding in width */
+  padding: 0.5em;
+  font: inherit;
+}
+
+button {
+  grid-column: 1 / -1;
+  margin-top: 1ch;
+}
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 2ch;
+
+  grid-template-rows: auto auto 1fr;
+}
+
+.projects article {
+  display: grid;
+  grid-template-rows: subgrid;   /* key part */
+  grid-row: span 3;              /* each card spans 3 rows */
+
+  gap: 1em;                      /* spacing inside card */
+}
+
+.projects h2 {
+  margin: 0;
+}
+
+/* ===== RESUME (minimal) ===== */
+
+/* space between sections */
+section {
+  margin-bottom: 2ch;
+}
+
+/* subtle hierarchy for section titles */
+section h2 {
+  margin-bottom: 0.5ch;
+  border-bottom: 0.2ch solid oklch(80% 3% 200);
+}
+
+/* tighten article spacing */
+article {
+  margin-bottom: 1.5ch;
+}
+
+/* align text + date */
+article p {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* style date */
+.date {
+  white-space: nowrap;
+  color: black;
+}
+
+/* cleaner lists */
+ul {
+  margin: 0.5ch 0 0 2ch;
+}
+
+
+/* SMALL SCREENS */
+@media (max-width: 60ch) {  
+  body {
+    padding: 1.5ch;
   }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav a {
+    text-align: left;
+  }
+}
