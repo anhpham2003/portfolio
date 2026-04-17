@@ -1,9 +1,11 @@
 :root {
   --color-accent: oklch(65% 15% 140);
+  --border-color: oklch(50% 10% 200 / 40%);
 }
 
 html {
   accent-color: var(--color-accent);
+  color-scheme: light dark;
 }
 
 body {
@@ -45,9 +47,10 @@ img {
 nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5ch;          
+  gap: 1.5ch;
   margin-bottom: 2ch;
-  border-bottom: 1px solid oklch(80% 3% 200);
+  margin-right: 16rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* LINKS */
@@ -65,7 +68,7 @@ nav a {
 /* HOVER */
 nav a:hover {
   border-bottom-color: var(--color-accent);
-  background: oklch(from var(--color-accent) 95% 5% h);
+  background: color-mix(in oklch, var(--color-accent), canvas 85%);
 }
 
 nav a.current {
@@ -81,17 +84,31 @@ form {
   gap: 1em;
 }
 
-label {
+form label {
   display: grid;
   grid-template-columns: subgrid;
   grid-column: 1 / -1;
 }
 
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 80%;
+}
+
+
 input,
-textarea{
+textarea {
   width: 100%;             /* full width */
   box-sizing: border-box;  /* include padding in width */
   padding: 0.5em;
+}
+
+input,
+textarea,
+button,
+select {
   font: inherit;
 }
 
@@ -130,7 +147,7 @@ section {
 /* subtle hierarchy for section titles */
 section h2 {
   margin-bottom: 0.5ch;
-  border-bottom: 0.2ch solid oklch(80% 3% 200);
+  border-bottom: 0.2ch solid var(--border-color);
 }
 
 /* tighten article spacing */
@@ -148,7 +165,7 @@ article p {
 /* style date */
 .date {
   white-space: nowrap;
-  color: black;
+  color: canvastext;
 }
 
 /* cleaner lists */
