@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Personal Website and Portfolio",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a personal website with reusable JavaScript, shared navigation, a theme switcher, project templating, and homepage project previews."
+  },
+  {
+    "title": "Project Data Templating",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Moved project content from hardcoded HTML into a JSON file and rendered it dynamically with reusable JavaScript functions."
+  },
+  {
+    "title": "GitHub Stats API",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Fetched public profile data from the GitHub API and displayed repository, gist, follower, and following counts on the homepage."
+  },
+  {
+    "title": "Projects Gallery Layout",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Created a responsive project gallery using CSS Grid and reusable article templates for consistent project cards."
+  },
+  {
+    "title": "Contact Form Page",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a contact page with an HTML form and JavaScript that formats submitted fields into a mailto-style request."
+  },
+  {
+    "title": "Resume Page",
+    "year": 2026,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Designed a structured resume page with education, experience, projects, and technical skills sections."
+  },
+  {
+    "title": "Seaside Sips Coffee Shop",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built an agentic AI recommendation system using Meta LLaMA 3, Python, React, Firebase, Pinecone, RAG, and Apriori."
+  },
+  {
+    "title": "SnapPod",
+    "year": 2025,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built a Python, FastAPI, NLP, and AWS S3 pipeline for podcast highlight detection and faster media processing."
+  },
+  {
+    "title": "NASA L'SPACE Mission Concept",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Worked on a mission concept project through NASA L'SPACE, contributing research, documentation, and technical planning."
+  },
+  {
+    "title": "Data Science Course Project",
+    "year": 2024,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analyzed a dataset with Python and data science tools, focusing on cleaning, exploration, modeling, and communication."
+  },
+  {
+    "title": "Software Engineering Team Project",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Collaborated on a software engineering project with version control, issue tracking, code reviews, and iterative feature development."
+  },
+  {
+    "title": "Exploratory Visualization Study",
+    "year": 2023,
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Created exploratory charts and visual summaries to understand patterns in a dataset and communicate key findings."
+  }
+]

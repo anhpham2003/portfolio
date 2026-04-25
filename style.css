@@ -137,6 +137,27 @@ button {
   margin: 0;
 }
 
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1ch;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  color: #7b8492;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1;
+}
+
 /* ===== RESUME (minimal) ===== */
 
 /* space between sections */
