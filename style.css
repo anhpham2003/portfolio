@@ -117,6 +117,76 @@ button {
   margin-top: 1ch;
 }
 /* PROJECTS */
+.chart-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin-block: 2em;
+  max-width: 100%;
+}
+
+#projects-pie-plot {
+  display: block;
+  width: min(20em, 45vw);
+  min-width: 12em;
+  max-width: 20em;
+  flex: 0 1 20em;
+
+  overflow: visible;
+}
+
+#projects-pie-plot path {
+  transition: 300ms;
+  cursor: pointer;
+}
+
+#projects-pie-plot:has(path:hover) path:not(:hover) {
+  opacity: 0.5;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7em, 1fr));
+  gap: 1em;
+  flex: 1 1 18em;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid var(--border-color);
+  list-style: none;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+}
+
+.selected {
+  --color: oklch(60% 45% 0) !important;
+}
+
+.selected:is(path) {
+  fill: var(--color);
+}
+
+.swatch {
+  display: inline-block;
+  width: 0.9em;
+  flex: 0 0 auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--color);
+}
+
+.searchBar {
+  box-sizing: border-box;
+  width: 100%;
+  margin-block: 1em 2em;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
@@ -133,8 +203,16 @@ button {
   gap: 1em;                      /* spacing inside card */
 }
 
-.projects h2 {
+.projects h2,
+.projects h3 {
   margin: 0;
+}
+
+.project-year {
+  color: #7b8492;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  font-style: italic;
 }
 
 #profile-stats dl {
