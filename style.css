@@ -236,6 +236,44 @@ button {
   line-height: 1;
 }
 
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2em;
+  margin-block: 1.5em 4em;
+}
+
+.stats dt {
+  grid-row: 1;
+  color: #7b8492;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+#chart svg {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 70ch) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats dt,
+  .stats dd {
+    grid-row: auto;
+  }
+}
+
 /* ===== RESUME (minimal) ===== */
 
 /* space between sections */
