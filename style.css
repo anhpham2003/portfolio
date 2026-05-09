@@ -263,6 +263,60 @@ button {
   max-width: 100%;
 }
 
+.gridlines line {
+  stroke: color-mix(in oklch, canvasText, canvas 85%);
+}
+
+.gridlines path {
+  display: none;
+}
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25em 1em;
+  margin: 0;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info dt {
+  color: #7b8492;
+  font-weight: 600;
+}
+
+dl.info dd {
+  margin: 0;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  z-index: 1;
+  padding: 0.75em 1em;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5em;
+  background: color-mix(in oklch, canvas, transparent 8%);
+  box-shadow: 0 0.35em 1.5em oklch(0% 0 0 / 18%);
+  backdrop-filter: blur(0.5em);
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+circle {
+  transition: 200ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
 @media (max-width: 70ch) {
   .stats {
     grid-template-columns: repeat(2, 1fr);
