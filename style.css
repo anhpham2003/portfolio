@@ -279,12 +279,14 @@ button {
   white-space: nowrap;
 }
 
-#scrolly-1 {
+#scrolly-1,
+#scrolly-2 {
   position: relative;
   display: block;
 }
 
-#scatter-story {
+#scatter-story,
+#files-story {
   position: relative;
   max-width: 70ch;
   margin-inline: auto;
@@ -295,14 +297,25 @@ button {
   padding-block: 12vh;
   font-size: 1.15rem;
   line-height: 1.6;
+  opacity: 0.45;
+  transition: opacity 200ms, transform 200ms;
 }
 
-#scatter-plot {
+.step.active {
+  color: canvasText;
+  opacity: 1;
+  transform: translateY(-0.25rem);
+}
+
+#scatter-plot,
+#files-plot {
   position: sticky;
   top: 0;
   left: 0;
   bottom: auto;
   z-index: 1;
+  max-width: 88%;
+  margin-inline: auto;
   padding-block: 1rem 0.5rem;
   background: canvas;
 }
@@ -312,6 +325,16 @@ button {
   grid-template-columns: minmax(12em, 1fr) 4fr;
   gap: 0.85em 1.5em;
   margin-block: 1.5em 3em;
+}
+
+#file-leader {
+  margin-block: 0 1rem;
+  color: #7b8492;
+  font-size: 1.1rem;
+}
+
+#file-leader code {
+  color: canvasText;
 }
 
 #files > div {
@@ -414,6 +437,11 @@ circle:hover {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+circle.current-commit {
+  stroke: var(--accent-color, #8baa8b);
+  stroke-width: 4;
 }
 
 @keyframes marching-ants {

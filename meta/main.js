@@ -271,6 +271,10 @@ function renderScatterPlot(data, commits) {
     .attr('r', (d) => rScale(d.totalLines))
     .style('--r', (d) => rScale(d.totalLines))
     .attr('fill', 'steelblue')
+    .classed(
+      'current-commit',
+      (d) => d.datetime.getTime() === commitMaxTime.getTime(),
+    )
     .style('fill-opacity', 0.7)
     .on('mouseenter', (event, commit) => {
       d3.select(event.currentTarget).style('fill-opacity', 1);
@@ -335,6 +339,10 @@ function updateScatterPlot(data, commits) {
     .attr('r', (d) => rScale(d.totalLines))
     .style('--r', (d) => rScale(d.totalLines))
     .attr('fill', 'steelblue')
+    .classed(
+      'current-commit',
+      (d) => d.datetime.getTime() === commitMaxTime.getTime(),
+    )
     .style('fill-opacity', 0.7)
     .on('mouseenter', (event, commit) => {
       d3.select(event.currentTarget).style('fill-opacity', 1);
@@ -383,6 +391,21 @@ function updateFileDisplay(commits) {
     .attr('style', (d) => `--color: ${colors(d.type)}`);
 }
 
+function updateFileLeader(commits) {
+  const lines = commits.flatMap((d) => d.lines);
+  const files = d3.rollups(
+    lines,
+    (D) => D.length,
+    (d) => d.file,
+  );
+  const leader = d3.greatest(files, (d) => d[1]);
+  const leaderElement = document.getElementById('file-leader');
+
+  leaderElement.innerHTML = leader
+    ? `Current leader: <code>${leader[0]}</code> with ${leader[1]} lines`
+    : '';
+}
+
 function updateForCommitTime(maxTime) {
   commitMaxTime = maxTime;
   commitProgress = timeScale(commitMaxTime);
@@ -397,6 +420,7 @@ function updateForCommitTime(maxTime) {
 
   renderCommitInfo(data, filteredCommits);
   updateFileDisplay(filteredCommits);
+  updateFileLeader(filteredCommits);
   updateScatterPlot(data, filteredCommits);
 }
 
@@ -430,7 +454,40 @@ function renderScatterStory(commits) {
 }
 
 function onStepEnter(response) {
+  d3.select(response.element.parentNode)
+    .selectAll('.step')
+    .classed('active', function () {
+      return this === response.element;
+    });
   updateForCommitTime(response.element.__data__.datetime);
+}
+
+function renderFileStory(commits) {
+  d3.select('#files-story')
+    .selectAll('.step')
+    .data(commits, (d) => d.id)
+    .join('div')
+    .attr('class', 'step')
+    .html((d) => {
+      const filesEdited = d3.rollups(
+        d.lines,
+        (D) => D.length,
+        (d) => d.file,
+      );
+      const biggestFile = d3.greatest(filesEdited, (d) => d[1]);
+
+      return `
+        By ${d.datetime.toLocaleString('en', {
+          dateStyle: 'long',
+          timeStyle: 'short',
+        })}, the codebase had grown to ${d3.sum(
+          commits.filter((commit) => commit.datetime <= d.datetime),
+          (commit) => commit.totalLines,
+        )} lines.
+        This commit touched ${filesEdited.length} files, with
+        <code>${biggestFile[0]}</code> receiving ${biggestFile[1]} lines.
+      `;
+    });
 }
 
 let data = await loadData();
@@ -464,15 +521,24 @@ renderCommitInfo(data, commits);
 renderScatterPlot(data, commits);
 updateFileDisplay(filteredCommits);
 renderScatterStory(commits);
+renderFileStory(commits);
+updateForCommitTime(commitMaxTime);
 document
   .getElementById('commit-progress')
   .addEventListener('input', onTimeSliderChange);
-onTimeSliderChange();
 
-const scroller = scrollama();
-scroller
+const scatterScroller = scrollama();
+scatterScroller
   .setup({
     container: '#scrolly-1',
     step: '#scrolly-1 .step',
+  })
+  .onStepEnter(onStepEnter);
+
+const filesScroller = scrollama();
+filesScroller
+  .setup({
+    container: '#scrolly-2',
+    step: '#scrolly-2 .step',
   })
   .onStepEnter(onStepEnter);
