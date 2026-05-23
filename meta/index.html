@@ -12,6 +12,11 @@
     <h1>Meta Analysis</h1>
     <p>This page will show statistics about the code in this website.</p>
     <h2>Summary</h2>
+    <div class="commit-progress-filter">
+        <label for="commit-progress">Show commits until:</label>
+        <input type="range" id="commit-progress" min="0" max="100" value="100">
+        <time id="commit-max-time"></time>
+    </div>
     <div id="stats"></div>
     <h2>Commits by time of day</h2>
     <div id="chart"></div>

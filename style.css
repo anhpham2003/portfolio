@@ -263,6 +263,22 @@ button {
   max-width: 100%;
 }
 
+.commit-progress-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+  margin-block: 1.5em;
+}
+
+.commit-progress-filter input {
+  flex: 1;
+}
+
+.commit-progress-filter time {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
 .gridlines line {
   stroke: color-mix(in oklch, canvasText, canvas 85%);
 }
@@ -308,9 +324,13 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 
 circle {
-  transition: 200ms;
+  transition: all 200ms, r calc(var(--r) * 100ms);
   transform-origin: center;
   transform-box: fill-box;
+
+  @starting-style {
+    r: 0;
+  }
 }
 
 circle:hover {
